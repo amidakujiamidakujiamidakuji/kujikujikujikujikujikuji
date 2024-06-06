@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>くじ引き</title>
+</head>
+<body>
+    <h1>くじ引き</h1>
+    <form id="lotteryForm">
+        <label for="participants">参加者（カンマ区切り）:</label>
+        <input type="text" id="participants" name="participants" required>
+        <br><br>
+        <label for="winner">当選者:</label>
+        <input type="text" id="winner" name="winner" required>
+        <br><br>
+        <button type="button" onclick="drawLottery()">くじを引く</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function drawLottery() {
+            const participants = document.getElementById('participants').value.split(',');
+            const winner = document.getElementById('winner').value;
+            const result = document.getElementById('result');
+            if (participants.includes(winner)) {
+                result.textContent = `当選者は ${winner} です！`;
+            } else {
+                result.textContent = '当選者がリストに含まれていません。';
+            }
+        }
+    </script>
+</body>
+</html>
